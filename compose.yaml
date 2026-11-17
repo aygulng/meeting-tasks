@@ -1,0 +1,20 @@
+services:
+  meeting-tasks:
+    build: .
+    ports:
+      - "8001:8001"
+    environment:
+      OLLAMA_URL: http://ollama:11434
+      OLLAMA_TIMEOUT: "240"
+    depends_on:
+      - ollama
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    volumes:
+      - ollama-data:/root/.ollama
+    restart: unless-stopped
+
+volumes:
+  ollama-data:

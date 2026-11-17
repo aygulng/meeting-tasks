@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+  <meta charset="utf-8" /><meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  />
+  <title>Задачи из встречи</title>
+  <link rel="stylesheet" href="/static/css/styles.css" />
+  <main>
+    <div class="badge">OLLAMA · ЛОКАЛЬНАЯ МОДЕЛЬ</div>
+    <h1>Встреча закончилась.<br />Задачи остались здесь.</h1>
+    <p>
+      Превратите заметки в список задач с ответственными, сроками и цитатами из
+      разговора.
+    </p>
+    <section>
+      <label for="model">Модель на компьютере</label>
+      <div class="row">
+        <select id="model" aria-label="Модель"></select
+        ><button id="refresh">Обновить модели</button>
+      </div>
+      <p class="muted">
+        Текст отправляется в Ollama на этом компьютере. Приложение не сохраняет
+        заметки на диск.
+      </p>
+      <label for="notes">Заметки встречи</label
+      ><textarea
+        id="notes"
+        maxlength="12000"
+        placeholder="Вставьте заметки или загрузите пример…"
+      ></textarea>
+      <div class="row">
+        <button id="sample">Вставить пример</button
+        ><button class="primary" id="run" disabled>Извлечь задачи</button>
+      </div>
+      <div id="status" role="status" aria-live="polite"></div>
+    </section>
+    <section id="output" hidden>
+      <h2>Результат</h2>
+      <p class="muted" id="stats"></p>
+      <div id="tasks"></div>
+      <p class="muted">
+        Проверьте результат по цитатам: модель может ошибаться. Отсутствующие
+        сроки и ответственные не дополняются автоматически.
+      </p>
+      <button id="download">Скачать JSON</button>
+      <details>
+        <summary>Исходный JSON</summary>
+        <pre id="json"></pre>
+      </details>
+    </section>
+    <div class="footer">
+      Меньше рутины после встречи. Больше ясности в задачах.
+    </div>
+  </main>
+  <script type="module" src="/static/js/app.js"></script>
+</html>
